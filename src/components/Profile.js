@@ -25,7 +25,6 @@ class Profile extends Component {
         if (this.props.profile) {
             return (
                 <div>
-                    Hello, 
                     <Container
                         style={{
                         marginTop: '4em'
@@ -43,7 +42,7 @@ class Profile extends Component {
             )
         } else {
             return (
-                <div><Loader active inline='centered' /></div>
+                <div style={{marginTop: '5em'}}><Loader active inline='centered' /></div>
             )
         }
 
