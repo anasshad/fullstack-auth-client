@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router';
-import {Link, NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {
   Container,
   Menu,

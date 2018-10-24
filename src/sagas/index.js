@@ -8,7 +8,6 @@ import SERVER_URL from '../server_url';
 import {
     AUTH_REQUEST,
     AUTH_SUCCESS,
-    AUTH_FAILURE,
     FETCH_PROFILE,
     SUCCESS_PROFILE,
     FAILURE_PROFILE,

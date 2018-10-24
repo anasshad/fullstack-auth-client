@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {
     Container,
-    Segment,
     Header,
     Icon,
     Button,
