@@ -1,44 +1,51 @@
 import React, {Component} from 'react';
-import queryString from 'query-string';
-import {authRequest} from '../actions';
-import {connect} from 'react-redux'
+import {
+    Container,
+    Segment,
+    Header,
+    Icon,
+    Button,
+    Grid
+} from 'semantic-ui-react'
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
-import {Container, Segment, Header, Icon, Button} from 'semantic-ui-react'
-
-import './App.css';
-
-import SERVER_URL from '../server_url'
-
-class App extends Component {
-  componentWillMount() {
-    var query = queryString.parse(this.props.location.search);
-    console.log(this.props)
-    if (query.token) {
-      window.localStorage.setItem("jwt", query.token);
-      this.props.history.push("/");
+class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {}
     }
-  }
+    render() {
+        return (
+            <Container style={{marginTop: '4em'}}>
 
-  render() {
-    return (
-      <div className="App">
-        This is the app component
-        <a href={`${SERVER_URL}/auth/facebook`}>Login Facebook</a>
-        <button onClick={() => this.props.authRequest('facebook')} >Facebook</button>
-        <Container>
-        <Header as='h2'>
-          <Icon name='home' />
-          <Header.Content>
-            Welcome to Full Stack Authentication
-            <Header.Subheader>Login to continue</Header.Subheader>
-            <Button type="primary">Login</Button>
-          </Header.Content>
-        </Header>
-        </Container>
+                <Grid centered verticalAlign='middle'>
+                    <Grid.Column width={6}>
+                        <Icon name='home' size="massive"/>
+                    </Grid.Column>
+                    <Grid.Column width={10}>
 
-      </div>
-    );
-  }
+                        <Header size='large'>Welcome to Full Stack Authentication</Header>
+                        {!this.props.token && (
+                            <div>
+                                <Header sub>Login to continue</Header>
+                                <br/>
+                                <Button primary as={Link} to="/login">Login</Button>
+                            </div>
+                        )}
+
+                    </Grid.Column>
+                </Grid>
+            </Container>
+
+        );
+    }
 }
 
-export default connect(null, {authRequest})(App);
+function mapStateToProps(state){
+    return {
+        token: state.token
+    }
+}
+
+export default connect(mapStateToProps, null)(Login);
